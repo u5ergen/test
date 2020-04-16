@@ -26,7 +26,7 @@ def webhook():
 		# repo = git.Repo('/home/viy04205/mysite')
 		# origin = repo.remotes.origin
 		# origin.pull()
-		print(BASE_DIR)
+		os.system(f"git pull origin master")
 
 		return 'Updated PythonAnywhere successfully', 200
 	else:
