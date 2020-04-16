@@ -15,8 +15,9 @@ def hello_world():
     return 'Hello, World! - 1'
 
 
-@app.route('/update_server', methods=['POST'])
+@app.route('/update_server', methods=['POST', 'GET'])
 def webhook():
+	print('\n\n\n\nwebhook\n\n\n\n')
 	if request.method == 'POST':
 		repo = git.Repo('https://github.com/u5ergen/test.git')
 		origin = repo.remotes.origin
