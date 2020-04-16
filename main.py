@@ -18,27 +18,20 @@ app.config.from_object(Config)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! - 777'
+    return 'Hello, World! - 888'
 
 
 @app.route('/update_server', methods=['POST', 'GET'])
 def webhook():
-	# os.system(f"cd {BASE_DIR}")
-	# os.system("git pull origin master")
-	# test = subprocess.Popen(['git', 'pull', 'origin', 'master'])
-	call(['git', 'pull', 'origin', 'master'])
-	return 'Updated PythonAnywhere successfully', 200
+	if request.method == 'POST':
+		# repo = git.Repo('https://github.com/u5ergen/test.git')
+		repo = git.Repo('/home/viy04205/mysite')
+		origin = repo.remotes.origin
+		origin.pull()
 
-	# if request.method == 'POST':
-	# 	# repo = git.Repo('https://github.com/u5ergen/test.git')
-	# 	# repo = git.Repo('/home/viy04205/mysite')
-	# 	# origin = repo.remotes.origin
-	# 	# origin.pull()
-	# 	os.system(f"git pull origin master")
-
-	# 	return 'Updated PythonAnywhere successfully', 200
-	# else:
-	# 	return 'Wrong event type', 400 
+		return 'Updated PythonAnywhere successfully', 200
+	else:
+		return 'Wrong event type', 400 
 
 
 if __name__ == '__main__':
