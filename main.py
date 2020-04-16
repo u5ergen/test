@@ -24,7 +24,7 @@ def hello_world():
 def webhook():
 	# os.system(f"cd {BASE_DIR}")
 	# os.system("git pull origin master")
-	test = subprocess.Popen(['git', 'pull', 'origin', 'master'], stdout=subprocess.PIPE)
+	test = subprocess.Popen(['git', 'pull', 'origin', 'master'])
 	return 'Updated PythonAnywhere successfully', 200
 
 	# if request.method == 'POST':
