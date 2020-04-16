@@ -21,6 +21,7 @@ def hello_world():
 
 @app.route('/update_server', methods=['POST', 'GET'])
 def webhook():
+	os.system(f"cd {BASE_DIR}")
 	os.system("git pull origin master")
 	return 'Updated PythonAnywhere successfully', 200
 
