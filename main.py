@@ -21,16 +21,19 @@ def hello_world():
 
 @app.route('/update_server', methods=['POST', 'GET'])
 def webhook():
-	if request.method == 'POST':
-		# repo = git.Repo('https://github.com/u5ergen/test.git')
-		# repo = git.Repo('/home/viy04205/mysite')
-		# origin = repo.remotes.origin
-		# origin.pull()
-		os.system(f"git pull origin master")
+	os.system(f"git pull origin master")
+	return 'Updated PythonAnywhere successfully', 200
+	
+	# if request.method == 'POST':
+	# 	# repo = git.Repo('https://github.com/u5ergen/test.git')
+	# 	# repo = git.Repo('/home/viy04205/mysite')
+	# 	# origin = repo.remotes.origin
+	# 	# origin.pull()
+	# 	os.system(f"git pull origin master")
 
-		return 'Updated PythonAnywhere successfully', 200
-	else:
-		return 'Wrong event type', 400 
+	# 	return 'Updated PythonAnywhere successfully', 200
+	# else:
+	# 	return 'Wrong event type', 400 
 
 
 if __name__ == '__main__':
