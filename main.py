@@ -18,7 +18,7 @@ app.config.from_object(Config)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! - 888'
+    return 'Hello, World! - 999'
 
 
 @app.route('/update_server', methods=['POST', 'GET'])
@@ -27,7 +27,7 @@ def webhook():
 		# repo = git.Repo('https://github.com/u5ergen/test.git')
 		repo = git.Repo('/home/viy04205/mysite')
 		origin = repo.remotes.origin
-		origin.pull()
+		origin.pull('master')
 
 		return 'Updated PythonAnywhere successfully', 200
 	else:
