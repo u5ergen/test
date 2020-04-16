@@ -16,14 +16,14 @@ app.config.from_object(Config)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! - 666'
+    return 'Hello, World! - 777'
 
 
 @app.route('/update_server', methods=['POST', 'GET'])
 def webhook():
 	os.system(f"git pull origin master")
 	return 'Updated PythonAnywhere successfully', 200
-	
+
 	# if request.method == 'POST':
 	# 	# repo = git.Repo('https://github.com/u5ergen/test.git')
 	# 	# repo = git.Repo('/home/viy04205/mysite')
