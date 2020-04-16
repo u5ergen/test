@@ -17,7 +17,7 @@ app.config.from_object(Config)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! - 444'
+    return 'Hello, World! - 555'
 
 
 @app.route('/update_server', methods=['POST', 'GET'])
