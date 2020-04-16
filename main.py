@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request
 import os
 import subprocess
+from subprocess import call
 
 from config import Config
 import git
@@ -17,14 +18,15 @@ app.config.from_object(Config)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! - 555'
+    return 'Hello, World! - 666'
 
 
 @app.route('/update_server', methods=['POST', 'GET'])
 def webhook():
 	# os.system(f"cd {BASE_DIR}")
 	# os.system("git pull origin master")
-	test = subprocess.Popen(['git', 'pull', 'origin', 'master'])
+	# test = subprocess.Popen(['git', 'pull', 'origin', 'master'])
+	call(['git', 'pull', 'origin', 'master'])
 	return 'Updated PythonAnywhere successfully', 200
 
 	# if request.method == 'POST':
