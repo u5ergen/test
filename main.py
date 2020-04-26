@@ -17,8 +17,8 @@ app.config.from_object(Config)
 
 
 @app.route('/')
-def hello_world():
-    return 'Test2'
+def index():
+    return render_template('index_mini.html')
 
 
 @app.route('/update_server', methods=['POST', 'GET'])

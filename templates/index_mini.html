@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	Start
+	<img src="/static/images/x.png">
+	<img src="{{ url_for('static', filename='images/x.png') }}" />
+	<br>
+	<br>
+	
+	<a href="#" id="downloader" onclick="download2()" download="image.png">Download!</a>
+	<button onclick="saver();">DOWNLOAD</button>
+	<br>
+	<br>
+	<br>
+
+	<div>
+		<canvas id="canvas" width="640" height="360"></canvas>
+	</div>
+
+	<script>
+		var canvas = document.getElementById('canvas');
+		context = canvas.getContext('2d');
+
+		image = new Image();
+		images = ["/static/images/x.png"]
+
+		var loadedImages = {};
+		var promiseArray = images.map(function(image_url){
+			var prom = new Promise(function(resolve,reject){
+				var img = new Image();
+				img.onload = function(){
+					loadedImages[image_url] = img;
+					resolve();
+				};
+				// img.setAttribute('crossorigin', 'anonymous');
+				img.src = image_url;
+			});
+			return prom;
+		});
+		Promise.all(promiseArray).then(imagesLoaded);
+		function imagesLoaded(){
+			context.drawImage(loadedImages[images[0]], 0, 0);
+		}
+
+		// image.onload() = function() {
+		// 	context.drawImage(image, 0, 0)
+		// }
+		// context.drawImage(image, 0, 0)
+
+		function saver() {
+			console.log('saver')
+			var c=document.getElementById("canvas");
+			var d=c.toDataURL("image/png");
+			var w=window.open('about:blank','image from canvas');
+			w.document.write("<img src='"+d+"' alt='from canvas'/>");
+		}
+
+		function download2(){
+		    document.getElementById("downloader").download = "image.png";
+		    document.getElementById("downloader").href = document.getElementById("canvas").toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+		}
+
+
+	</script>
+</body>
+</html>
