@@ -76,7 +76,7 @@ def make_deck_info_dict(deckstring, lang='enUS', send_existing_files = False):
 
 	deck_info['decklist'] = decklist
 
-	tmp.remove_old_temp_files(buffer=30, temp_dir=TEMP_DIR)
+	# tmp.remove_old_temp_files(buffer=30, temp_dir=TEMP_DIR)
 	if send_existing_files:
 		deck_info['images_filenames_cards'] = ['static/images/temp/' + filename for filename in os.listdir(TEMP_DIR)]
 
