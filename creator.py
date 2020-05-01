@@ -170,3 +170,4 @@ if __name__ == '__main__':
 	deck_info = make_deck_info_dict('AAECAQcC3q0D1LoDDhYckAPUBNQIvaYD9agD3KkD3a0DpLYDq7YDu7kDwLkDnLsDAA==')
 	print(datetime.datetime.now() - startTime)
 	print(deck_info['images_filenames_all'])
+	print(deck_info['format'])
