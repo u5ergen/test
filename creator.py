@@ -17,7 +17,7 @@ import tmp
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 BASE_DIRx = os.getcwd()
-TEMP_DIR = os.path.join(BASE_DIRx, 'static/images/temp/')
+TEMP_DIR = os.path.join(BASE_DIR, 'static/images/temp/')
 
 def get_decklist(deckstring):
 	try:
@@ -151,11 +151,6 @@ def create(deckstring, user_id='user_id', lang='enUS', hex_color = '#000000', tr
 	# else:
 	# 	opener ="open" if sys.platform == "darwin" else "xdg-open"
 	# 	subprocess.call([opener, (f'{BASE_DIR}/static/temp/' + filename)])
-
-
-
-
-
 
 
 if __name__ == '__main__':
