@@ -6,7 +6,7 @@ import requests
 
 BASE_DIR = os.getcwd()
 TEMP_DIR = os.path.join(BASE_DIR, 'static/images/temp/')
-url = 'https://hsto.org/r/w32/webt/5a/de/0e/5ade0efe6f5d5276653463.png'
+url = 'https://art.hearthstonejson.com/v1/tiles/CS2_235.jpg'
 
 
 def make_temp_file_from_url(url, temp_dir=TEMP_DIR):
