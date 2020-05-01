@@ -61,7 +61,7 @@ def make_deck_info_dict(deckstring, lang='enUS', send_existing_files = False):
 	decklen = len(decklist)
 	for cardlist in range(len(decklist)):
 		url = f"https://art.hearthstonejson.com/v1/render/latest/{lang}/256x/{decklist[cardlist][0]['id']}.png"
-		# url = 'https://hsto.org/r/w32/webt/5a/de/0e/5ade0efe6f5d5276653463.png'
+		# url = 'https://art.hearthstonejson.com/v1/tiles/CS2_235.jpg'
 
 		deck_info['deck_cost'] += rarity_cost[decklist[cardlist][0]['rarity']] * decklist[cardlist][1]
 		if send_existing_files != True:
@@ -166,5 +166,7 @@ if __name__ == '__main__':
 	deckstring = 'AAEBAf0EBMABqwSi0wK/pAMNcbsC7AXXtgLrugKHvQLBwQKP0wK+pAPdqQP0qwPCuAONuQMA'
 	deckstring = 'AAECAZ/HAgbTCuubA5+pA+O0A8i+A8jAAwzcAckGigfRpQOZqQPXrAParAPyrAOqrwPNrwOTugPpvgMA'
 	startTime = datetime.datetime.now()
-	create(deckstring)
+	# create(deckstring)
+	deck_info = make_deck_info_dict('AAECAQcC3q0D1LoDDhYckAPUBNQIvaYD9agD3KkD3a0DpLYDq7YDu7kDwLkDnLsDAA==')
 	print(datetime.datetime.now() - startTime)
+	print(deck_info['images_filenames_all'])
