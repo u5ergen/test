@@ -30,19 +30,22 @@ def remove_temp_file(filepath):
 def remove_old_temp_files(buffer=30, temp_dir=TEMP_DIR):
 	files = os.listdir(TEMP_DIR)
 	files.sort(key=lambda file: os.path.getmtime(f'{temp_dir}{file}'))
-	if len(files) > buffer:
-		for i in files[:-buffer]:
-			try:
-				print(f'Try to remove: {TEMP_DIR}{i}')
-				os.remove(f'{TEMP_DIR}{i}')
-			except:
-				print('remove_old_temp_files: can\'t remove file')
-				continue
+	with open('remove_old_temp_files.txt', 'a') as file:
+		if len(files) > buffer:
+			for i in files[:-buffer]:
+				try:
+					file.write(f'Try to remove: {TEMP_DIR}{i}\n')
+					print(f'Try to remove: {TEMP_DIR}{i}')
+					os.remove(f'{TEMP_DIR}{i}')
+				except:
+					file.write(f'remove_old_temp_files: can\'t remove file: {TEMP_DIR}{i}')
+					print('remove_old_temp_files: can\'t remove file')
+					continue
 
 
 def main():
-	foldername, filename = make_temp_file_from_url(url)
-	# remove_old_temp_files(30, TEMP_DIR)
+	# foldername, filename = make_temp_file_from_url(url)
+	remove_old_temp_files(30, TEMP_DIR)
 	print(os.listdir(TEMP_DIR))
 
 if __name__ == '__main__':
