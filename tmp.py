@@ -33,6 +33,7 @@ def remove_old_temp_files(buffer=30, temp_dir=TEMP_DIR):
 	if len(files) > buffer:
 		for i in files[:-buffer]:
 			try:
+				print(f'Try to remove: {TEMP_DIR}{i}')
 				os.remove(f'{TEMP_DIR}{i}')
 			except:
 				print('remove_old_temp_files: can\'t remove file')
