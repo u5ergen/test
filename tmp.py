@@ -3,9 +3,10 @@ import tempfile
 
 import requests
 
+from config import Config
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-TEMP_DIR = os.path.join(BASE_DIR, 'static/images/temp/')
+
+TEMP_DIR = Config.TEMP_DIR
 url = 'https://art.hearthstonejson.com/v1/tiles/CS2_235.jpg'
 
 

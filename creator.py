@@ -12,12 +12,11 @@ from PIL import Image
 from progress.bar import ChargingBar
 
 import tmp
+from config import Config
 
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+TEMP_DIR = Config.TEMP_DIR
 
-BASE_DIRx = os.getcwd()
-TEMP_DIR = os.path.join(BASE_DIR, 'static/images/temp/')
 
 def get_decklist(deckstring):
 	try:

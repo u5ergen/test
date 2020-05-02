@@ -16,11 +16,10 @@ from creator import get_decklist
 from creator import make_deck_info_dict
 from creator import create
 import tmp
+from config import Config
 
 
-# BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-BASE_DIR = os.getcwd()
-TEMP_DIR = os.path.join(BASE_DIR, 'static/images/temp/')
+TEMP_DIR = Config.TEMP_DIR
 
 
 app = Flask(__name__,)
