@@ -1,4 +1,5 @@
 import os
+import json
 
 from flask import Flask
 from flask import render_template
@@ -89,6 +90,12 @@ def dated_url_for(endpoint, **values):
                                  endpoint, filename)
             values['q'] = int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
+
+
+@app.route('/get_len', methods=['GET', 'POST'])
+def get_len():
+	name = request.form.get('deck_string_form')
+	return json.dumps({'len': len(name)})
 
 
 @app.route('/update_server', methods=['POST', 'GET'])
