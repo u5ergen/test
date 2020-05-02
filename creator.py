@@ -15,6 +15,7 @@ import tmp
 from config import Config
 
 
+BASE_DIR = Config.BASE_DIR
 TEMP_DIR = Config.TEMP_DIR
 
 
