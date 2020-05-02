@@ -6,6 +6,7 @@ import requests
 from config import Config
 
 
+BASE_DIR = Config.BASE_DIR
 TEMP_DIR = Config.TEMP_DIR
 url = 'https://art.hearthstonejson.com/v1/tiles/CS2_235.jpg'
 
