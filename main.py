@@ -1,22 +1,19 @@
+import os
+
 from flask import Flask
 from flask import render_template
 from flask import request
-import os
-
-import git
-from config import Config
-
-
-from flask import Flask, render_template, request, redirect, url_for, flash, make_response, session, current_app, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, make_response,session, current_app, jsonify
 from flask_wtf import FlaskForm
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from wtforms.validators import DataRequired
+import git
 
+from config import Config
 from creator import get_decklist
 from creator import make_deck_info_dict
 from creator import create
 import tmp
-from config import Config
 
 
 TEMP_DIR = Config.TEMP_DIR
