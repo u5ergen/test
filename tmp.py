@@ -30,7 +30,7 @@ def remove_temp_file(filepath):
 def remove_old_temp_files(buffer=30, temp_dir=TEMP_DIR):
 	files = os.listdir(TEMP_DIR)
 	files.sort(key=lambda file: os.path.getmtime(f'{temp_dir}{file}'))
-	with open('remove_old_temp_files.txt', 'a') as file:
+	with open(os.path.join(BASE_DIR, 'remove_old_temp_files.txt'), 'a') as file:
 		if len(files) > buffer:
 			for i in files[:-buffer]:
 				try:
