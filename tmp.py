@@ -4,7 +4,7 @@ import tempfile
 import requests
 
 
-BASE_DIR = os.getcwd()
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 TEMP_DIR = os.path.join(BASE_DIR, 'static/images/temp/')
 url = 'https://art.hearthstonejson.com/v1/tiles/CS2_235.jpg'
 
@@ -45,8 +45,10 @@ def remove_old_temp_files(buffer=30, temp_dir=TEMP_DIR):
 
 def main():
 	# foldername, filename = make_temp_file_from_url(url)
-	remove_old_temp_files(30, TEMP_DIR)
-	print(os.listdir(TEMP_DIR))
+	# remove_old_temp_files(30, TEMP_DIR)
+	# print(os.listdir(TEMP_DIR))
+	print(TEMP_DIR)
+
 
 if __name__ == '__main__':
 	main()
