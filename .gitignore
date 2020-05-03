@@ -9,3 +9,5 @@ __pycache__/
 /test.py
 /del.py
 /requirements.txt
+/remove_old_temp_files.txt
+/templates/test*

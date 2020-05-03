@@ -13,6 +13,8 @@ body {
     margin-right: 50px;
     /*border: solid 1px white; */
 }
+
+
 .flex-container{
     display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
     display: -ms-flexbox;  /* TWEENER - IE 10 */
@@ -36,7 +38,7 @@ body {
 }
 
 
-.send_form_lang_checkbox{
+.deck_string_form_lang_checkbox{
     padding-bottom: 6px;
 }
 
@@ -62,6 +64,7 @@ body {
 .centerblock__sendbtn:hover {
     background-color: #467285; /* Green */
     color: #FFEBD4;
+    transition: background-color .3s ease;
 }
 
 /*        canvas{
@@ -74,3 +77,8 @@ body {
     max-height: auto;
 }*/
 
+
+#status_span {
+    font-size: 75%;
+    font-weight: bold;
+}

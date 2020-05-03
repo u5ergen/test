@@ -4,145 +4,23 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <title>Hs Deck Creator</title>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 
 <body>
-<script>
-    var deck_info = {{ deck_info|tojson}}
-    console.log(deck_info)
-
-    if (deck_info['decklist'] != 0) {
-        console.log('!= 0')
-
-        var loadedImages = {};
-        var promiseArray = deck_info['images_filenames_all'].map(function(image_url){
-            var prom = new Promise(function(resolve,reject){
-                var img = new Image();
-                img.onload = function(){
-                    loadedImages[image_url] = img;
-                    resolve();
-                };
-                img.src = image_url;
-            });
-            return prom;
-        });
-
-        Promise.all(promiseArray).then(drawCanvas);
-        }
-
-    function drawCanvas(){
-        var options = {'radio_option_6': 6, 'radio_option_7': 7, 'radio_option_8': 8, 'radio_option_10': 10, }
-        var cols = options[document.querySelector('input[name="options"]:checked').id] //which radio button selected
-
-        var canvas = document.getElementById("canvas");
-        var context = canvas.getContext('2d');
-        context.clearRect(0, 0, 1792, 1200) ///! move into model
-
-        var height_correction = 300 * (cols*0.1); ///? move into model
-
-        canvas.width = deck_info['card_width'] * cols
-        canvas.height = (deck_info['card_height'] * (Math.ceil(deck_info['decklist'].length / cols))) + height_correction;
-
-        context.fillStyle = 'rgba(0,0,0,1)';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        context.drawImage(loadedImages[deck_info['class_bg_top']], 0, 0, canvas.width, canvas.width*560/2600);  ///? move into model
-
-        for (var i = 0; i < deck_info['decklist'].length; i++) {
-            if (i <= cols-1) {
-                position_x = deck_info['card_width']*i;
-                position_y = deck_info['card_height']*0;
-            } else if (i <= cols*2 - 1) {
-                position_x = deck_info['card_width'] * (i-cols);
-                position_y = deck_info['card_height'];
-            } else if (i <= cols*3 - 1) {
-                position_x = deck_info['card_width'] * (i-cols*2);
-                position_y = deck_info['card_height']*2;
-            } else if (i <= cols*4 - 1) {
-                position_x = deck_info['card_width'] * (i-cols*3);
-                position_y = deck_info['card_height']*3;
-            } else if (i <= cols*5 - 1) {
-                position_x = deck_info['card_width'] * (i-cols*4);
-                position_y = deck_info['card_height']*4;
-            }
-
-            if (deck_info['decklist'][i][0]['type'] == 'HERO') {
-                position_x = position_x - 7
-                position_y = position_y - 20
-            }
-
-            position_y = position_y + height_correction
-
-            if (deck_info['decklist'][i][1] == 2) {
-                context.drawImage(loadedImages[deck_info['x2_image']['src']], 
-                    position_x + deck_info['x2_image']['position_correction'][0], 
-                    position_y + deck_info['x2_image']['position_correction'][1]);
-            }
-
-            context.shadowBlur = 20;
-            context.shadowColor = "#000000";
-            context.drawImage(loadedImages[deck_info['images_filenames_cards'][i]], position_x, position_y);
-        }
-
-        // context.shadowBlur = 0;
-        // context.fillStyle = 'rgba(245,245,245,1)';
-        // context.font = "36px Roboto";
-        // context.fillText(deck_info['class_name'] + "'s Deck. Costs: " + deck_info['deck_cost'], 100, 120); ///? move into model
-        // context.fillText("Format: " + deck_info['format'], 100, 160); ///? move into model
-    }
-
-    function download_image(){
-        var download = document.getElementById("download");
-        var image = document.getElementById("canvas").toDataURL("image/png")
-        .replace("image/png", "image/octet-stream");
-        download.setAttribute("href", image);
-
-    }
-
-    function get_len() {
-        console.log('get_len START')
-        $.ajax({
-            type: "POST",
-            url: "/get_len",
-            data: $('form').serialize(),
-            type: 'POST',
-            success: function(response) {
-                var json = jQuery.parseJSON(response)
-                // $('#len').html(json.len)
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    }
-</script>
 
 <div class="mainblock">
-
-    <!-- <form action="" method="post">
-        <p>
-            <label for="deck_string_form">Deckstring</label>
-            <input type="text" name="deck_string_form">
-        </p>
-        <p>
-            <input type="submit">
-        </p>
-    </form> -->
-
-    <!-- <img src="static/images/bg_top_deckbuilder_mage.jpg" alt=""> -->
     <form action="" method="post" name="form">
-
         <div class="form-group">
-            <label for="deck_string_form">Deckstring</label>
-            <input class="form-control" id="deck_string_form" name="deck_string_form" aria-describedby="deck_string_formHelp">
-            <small id="deck_string_formHelp" class="form-text text-muted">Paste your deck's code.</small>
+            <label for="deck_string_form">Deckstring <span id="status_span"></span></label>
+            <input class="form-control" id="deck_string_form_input" name="deck_string_form_input" aria-describedby="deck_string_form_input_Help" oninput="checkDeckStringExistence(this)">           
+            <small id="deck_string_form_input_Help" class="form-text text-muted">Paste your deck's code.</small>
         </div>
 
-        <div class="send_form_lang_checkbox">
+        <div class="deck_string_form_lang_checkbox">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-secondary active">
                     <input type="radio" name="options_LANG" id="option_enUS"  value="enUS" checked> enUS
@@ -155,16 +33,20 @@
                 </label>
             </div>
         </div>
-        <!-- <button type="submit" class="btn btn-primary">Get image</button> -->
-        <button  type="submit" class="centerblock__sendbtn" id="get_image">Get image</button>
+        <!-- <button type="submit" class="centerblock__sendbtn" id="get_image">Get image</button> -->
+        <button type="button" class="centerblock__sendbtn" id="get_image" onclick="get_deck_info();">Get image</button>
 
     </form>
-        <button  type="button" value="Len" onclick="get_len();"> Len
+<!--     <br>
+    <div>
+        <button type="button" value="Len" onclick="get_len();"> Len
+    </div> -->
 
     <br>
 
-    <!-- <a id="download" download="image.png"><button type="button" onClick="download_image()">Download</button></a> -->
-    <a id="download" download="image.png"><button type="button" class="btn btn-success" onClick="download_image()">Download</button></a>
+
+    <!-- <a id="download" download="image.png"><button type="button" onClick="downloadImage()">Download</button></a> -->
+    <a id="download" download="image.png"><button type="button" class="btn btn-success" id="download_btn" onClick="downloadImage()" disabled>Download</button></a>
 
 
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -182,7 +64,7 @@
         </label>
     </div>
 
-    <br>10.11 just some separate text string {{ deck_info['class_name']}}
+    <br>22.25 just some separate text string 
 
     <div class="flex-container" id="canvas_div">
         <canvas class="inner-element" id='canvas' width="1792" height="1200">Закруглённые углы</canvas>
@@ -193,11 +75,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<!-- <script src= "{{ url_for('static',filename='js/script.js') }}"></script> -->
 <script
   src="https://code.jquery.com/jquery-3.5.0.js"
   integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
   crossorigin="anonymous"></script>
+<script src= "{{ url_for('static',filename='js/script.js') }}"></script>
 
 </body>
 </html>
