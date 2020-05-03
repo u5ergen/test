@@ -4,6 +4,8 @@ var download_btn = document.getElementById("download_btn");
 
 
 function get_deck_info() {
+    download_btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading... 0%';
+    new Promise(r => setTimeout(r, 2000));
     $.ajax({
         type: "POST",
         url: "/get_deck_info",
@@ -117,9 +119,20 @@ function drawCanvas(){
 
 
 function downloadImage(){
+    var currentdate = new Date(); 
+    var datetime = currentdate.getFullYear() + '-' 
+        + (currentdate.getMonth()+1)  + '-' 
+        + currentdate.getDate() + '-'
+        + currentdate.getHours() + '.'  
+        + currentdate.getMinutes() + '.' 
+        + currentdate.getSeconds();
+
+    console.log(datetime)
+
     var download = document.getElementById("download");
     var image = document.getElementById("canvas").toDataURL("image/png")
     .replace("image/png", "image/octet-stream");
+    download.setAttribute("download", datetime + '.png');
     download.setAttribute("href", image);
 
 }
