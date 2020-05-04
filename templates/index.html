@@ -6,6 +6,7 @@
     <title>Hs Deck Creator</title>
     <script src="{{url_for('static', filename='js/script.js')}}"></script>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/flags.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
@@ -20,7 +21,7 @@
             <small id="deck_string_form_input_Help" class="form-text text-muted">Paste your deck's code.</small>
         </div>
 
-        <div class="deck_string_form_lang_checkbox">
+<!--         <div class="deck_string_form_lang_checkbox">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-secondary active">
                     <input type="radio" name="options_LANG" id="option_enUS"  value="enUS" checked> enUS
@@ -32,6 +33,15 @@
                     <input type="radio" name="options_LANG" id="option_jaJP"  value="jaJP" > jaJP
                 </label>
             </div>
+        </div> -->
+        <div class="cc-selector">
+            <input id="enUS" type="radio" name="options_LANG" value="enUS" checked/>
+            <label class="drinkcard-cc enUS" for="enUS"></label>
+            <input id="ruRU" type="radio" name="options_LANG" value="ruRU" />
+            <label class="drinkcard-cc ruRU"for="ruRU"></label>
+
+            <input id="jaJP" type="radio" name="options_LANG" value="jaJP" />
+            <label class="drinkcard-cc jaJP"for="jaJP"></label>
         </div>
         <!-- <button type="submit" class="centerblock__sendbtn" id="get_image">Get image</button> -->
         <button type="button" class="centerblock__sendbtn" id="get_image" onclick="get_deck_info();">Get image</button>

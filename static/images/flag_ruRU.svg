@@ -1,0 +1,28 @@
+<svg width="512" height="336" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="338" width="514" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" fill="#F5F5F5" d="m473.655,1.611869l-435.31,0c-21.178,0 -38.345,17.167 -38.345,38.345l0,73.471l512,0l0,-73.471c0,-21.178 -17.167,-38.345 -38.345,-38.345z"/>
+  <path id="svg_2" fill="#FF4B55" d="m0,298.714869c0,21.177 17.167,38.345 38.345,38.345l435.31,0c21.177,0 38.345,-17.167 38.345,-38.345l0,-73.471l-512,0l0,73.471z"/>
+  <rect x="0" id="svg_3" fill="#41479B" height="111.81" width="512" y="113.425869"/>
+  <g id="svg_4"/>
+  <g id="svg_5"/>
+  <g id="svg_6"/>
+  <g id="svg_7"/>
+  <g id="svg_8"/>
+  <g id="svg_9"/>
+  <g id="svg_10"/>
+  <g id="svg_11"/>
+  <g id="svg_12"/>
+  <g id="svg_13"/>
+  <g id="svg_14"/>
+  <g id="svg_15"/>
+  <g id="svg_16"/>
+  <g id="svg_17"/>
+  <g id="svg_18"/>
+ </g>
+</svg>
