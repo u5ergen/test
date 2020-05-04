@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <title>Hs Deck Creator</title>
-    <script src="{{url_for('static', filename='js/script.js')}}"></script>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/flags.css') }}">
+
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/iro.min.js') }}"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
@@ -43,6 +45,7 @@
             <input id="jaJP" type="radio" name="options_LANG" value="jaJP" />
             <label class="drinkcard-cc jaJP"for="jaJP"></label>
         </div>
+
         <!-- <button type="submit" class="centerblock__sendbtn" id="get_image">Get image</button> -->
         <button type="button" class="centerblock__sendbtn" id="get_image" onclick="get_deck_info();">Get image</button>
 
@@ -73,6 +76,19 @@
             <input class="ooo" type="radio" name="options" id="radio_option_10" autocomplete="off" onclick="drawCanvas(0);"> 10 Cols
         </label>
     </div>
+
+    <button class="btn btn-info color_btn" id="color_btn">Background Color</button>
+    <div class="color_changer">
+        <div id="sliderPicker"></div>
+<!--         <div class="color_changer__box">
+            <p>I am a color_changer! </p>
+            <p>Click anywhere to close me!</p>
+        </div> -->
+    </div>
+
+    <script>
+
+    </script>
 
     <br>22.25 just some separate text string 
 

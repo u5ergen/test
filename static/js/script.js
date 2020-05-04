@@ -2,6 +2,46 @@ var deck_info = {'decklist': 0};
 var loadedImages = {};
 var download_btn = document.getElementById("download_btn");
 
+var sliderPicker = new iro.ColorPicker("#sliderPicker", {
+    width: 250,
+    color: "rgba(0, 0, 0, 1)",
+    padding: 10,
+    margin: 8,
+    borderWidth: 0,
+    borderColor: "#fff",
+    layout: [
+    {
+        component: iro.ui.Slider,
+        options: {
+            sliderType: 'hue'
+        }
+    },
+    {
+        component: iro.ui.Slider,
+        options: {
+            sliderType: 'saturation'
+        }
+    },
+    {
+        component: iro.ui.Slider,
+        options: {
+            sliderType: 'value'
+        }
+    },
+    {
+        component: iro.ui.Slider,
+        options: {
+            sliderType: 'alpha'
+        }
+    },
+    ]
+});
+
+sliderPicker.on('color:change', function(color) {
+    // console.log(color.hexString);
+    drawCanvas()
+});
+
 
 function get_deck_info() {
     download_btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading... 0%';
@@ -68,7 +108,11 @@ function drawCanvas(){
     canvas.width = deck_info['card_width'] * cols
     canvas.height = (deck_info['card_height'] * (Math.ceil(deck_info['decklist'].length / cols))) + height_correction;
 
-    context.fillStyle = 'rgba(0,0,0,1)';
+    var background_color = sliderPicker.color.rgbaString;
+    console.log(background_color)
+
+    // context.fillStyle = 'rgba(0,0,55,1)';
+    context.fillStyle = background_color;
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     context.drawImage(loadedImages[deck_info['class_bg_top']], 0, 0, canvas.width, canvas.width*560/2600);  ///? move into model
