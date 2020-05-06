@@ -221,12 +221,9 @@ function checkDeckStringExistence(form_input) {
     
 }
 
-
-
+// --------------------Toggle Hidden---------------------- //
 var options_btn = document.getElementById("options");
-var block_options = document.getElementById('block_options');
-block_options.style.display = (block_options.style.display == 'none') ? '' : 'none'
 options_btn.onclick = function() {
-    console.log(block_options)
-    block_options.style.display = (block_options.style.display == 'none') ? '' : 'none'
+    $("#hidden").toggle('fast');
 }
+

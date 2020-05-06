@@ -227,6 +227,8 @@ body {
 }
 
 /*************************************************************************/
+#hidden {display:none}
+
 .block_options {
     /*display: none;*/
     display: flex;
