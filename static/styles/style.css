@@ -1,17 +1,268 @@
-body {
-    margin:0;
-    padding: 10px;
-    /*background: rgb(2,0,36);*/
-    /*background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(54,9,121,1) 38%, rgba(126,51,247,1) 100%);*/
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #555555;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #555555;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #555555;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #555555;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #555555;
+}
 
-    /*background: radial-gradient(circle farthest-corner at 100px 50px, #FBF2EB, #352A3B);*/
-    background-color: #d0b597 !important;
+::placeholder { /* Most modern browsers support this now. */
+   color:    #555555;
+}
+
+button:active, button:focus, input:active, input:focus {
+  outline: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+
+body {
+    margin:0px;
+    padding: 0px;
+    background-color: #d0b597;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ccb193;
+}
+
+.btn {
+    border: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    outline: none;
+}
+/*.btn:hover {
+    border: none;
+    outline: none;
+}*/
+
+/*.btn > input[type=radio] {
+    display: none;
+}
+
+.btn > input[type=radio]:checked{
+    background: none;
+}*/
+
+
+.btn-primary-x {
+    color: #44392d;
+    background-color: #E8E1CE;
+}
+.btn-primary-x:hover {
+    color: #2b363b;
+    background-color: #467285;
+}
+.btn-primary-x:active {
+  color: #44392d;
+  background-color: #E8E1CE;
+  border: none;
+}
+
+
+.btn-secondary {
+  color: #ccb193;
+  background-color: #2b363b;
+  border: none;
+}
+
+.btn-secondary:hover {
+  color: #ccb193;
+  background-color: #2b363b;
+  border: none;
+}
+
+.btn-secondary:focus, .btn-secondary.focus {
+  color: #e8e1ce;
+  background-color: #467285;
+  border: none;
+  box-shadow: none;
+}
+
+.btn-secondary:active, .btn-secondary.active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #e8e1ce;
+  background-color: #467285;
+  border: none;
+}
+
+.btn-secondary:active:focus, .btn-secondary.active:focus,
+.show > .btn-secondary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.btn-secondary:disabled, .btn-secondary.disabled {
+  color: #ff0000;
+  background-color: #6c757d;
+  border: none;
+}
+
+
+
+
+
+
+
+
+.code_example{
+    color: #44392d;
 }
 
 .mainblock{
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+    min-width: 1000px;
     /*border: solid 1px white; */
+}
+
+.block_send {
+    width: 100%;
+    height: 196px;
+    background-color: #44392d;
+    border:none;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+#status{
+    position: relative;
+    left: 30px;
+    top: 1px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #352c23;
+}
+
+.block_send__input{
+    height: 48px;
+    width: calc(100% - 40px);
+    font-size: 20px;
+    font-weight: bold;
+    color: #44392d;
+    text-align:center;
+    background: #CCB193;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 1px;
+    spellcheck: false;
+}
+
+
+
+.block_send__sendbtn {
+    background-color: #E8E1CE;
+    border: none;
+    border-radius: 10px;
+    color: #44392d;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+
+    position: relative;
+    /* left: 336px; */
+    /*top: 16px;*/
+    width: 248px;
+    height: 52px;
+    outline: none;
+}
+
+.block_send__sendbtn:hover {
+    background-color: #467285; /* Green */
+    color: #FFEBD4;
+    transition: background-color .3s ease;
+}
+
+.block_send__sendbtn:active {
+    position: relative;
+    top: 1px;
+}
+.block_send__sendbtn:disabled {
+  pointer-events: none;
+  -webkit-filter: none;
+  filter: none;
+  background-color: #44392d;
+}
+
+#block_send__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    /*padding: 10px;*/
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#options {
+  align-self: flex-end;
+}
+
+#arrow_right{
+    max-height: 30px;
+}
+
+#options {
+    width: 200px;
+    height: 42px;
+}
+
+/*************************************************************************/
+.block_options {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 196px;
+    margin: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #44392d;
+}
+
+.opt_col {
+    margin-right: 20px;
+}
+
+.opt_col p{
+    display: block;
+    margin: 0;
+}
+
+.opt_col__line{
+    padding-bottom: 20px;
+}
+
+.deck_name_input{
+    height: 31px;
+    width: 350px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #e8e1ce;
+    background: #467285;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 10px;
+    spellcheck: false;
 }
 
 
@@ -39,33 +290,14 @@ body {
 
 
 .deck_string_form_lang_checkbox{
-    padding-bottom: 6px;
+    /*padding-bottom: 6px;*/
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 0px;
 }
 
 
-.centerblock__sendbtn {
-    background-color: #E8E1CE;
-    border: none;
-    border-radius: 10px;
-    color: #CCB193;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-
-    position: relative;
-    /* left: 336px; */
-    /*top: 16px;*/
-    width: 248px;
-    height: 52px;
-    outline: none;
-}
-
-.centerblock__sendbtn:hover {
-    background-color: #467285; /* Green */
-    color: #FFEBD4;
-    transition: background-color .3s ease;
-}
 
 /*canvas{
     border: solid 1px blue;  
@@ -83,7 +315,7 @@ body {
     font-weight: bold;
 }
 
-.color_changer {
+/*.color_changer {
   opacity: 0;
   visibility: hidden;
   display: -webkit-box;
@@ -107,10 +339,13 @@ body {
 .color_changer__box {
   padding: 1em;
   text-align: center;
-}
+}*/
 
 /* color_changer magic */
-.color_btn:focus + .color_changer {
+/*.color_btn:focus + .color_changer {
     opacity: 1;
     visibility: visible;
-}
+}*/
+
+
+

@@ -111,12 +111,12 @@ def get_deck_info():
 	print('/get_deck_info')
 
 	if request.method == 'POST':
-		deckstring = request.form.get('deck_string_form_input')
+		deckstring = request.form.get('block_send__input')
 		lang = request.form.get('options_LANG')
 		print(deckstring)
 		print(lang)
 		try:
-			deck_info = make_deck_info_dict(deckstring, lang=lang) #, send_existing_files = True)
+			deck_info = make_deck_info_dict(deckstring, lang=lang)# , send_existing_files = True)
 		except:
 			deck_info = {'decklist': 0}
 	else:

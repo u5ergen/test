@@ -1,6 +1,6 @@
 var deck_info = {'decklist': 0};
 var loadedImages = {};
-var download_btn = document.getElementById("download_btn");
+var download_btn = document.getElementById("get_image0");
 
 var sliderPicker = new iro.ColorPicker("#sliderPicker", {
     width: 250,
@@ -93,11 +93,11 @@ function get_deck_info() {
 }
 
 function drawCanvas(){
-    download_btn.innerHTML = 'Download'
+    download_btn.innerHTML = 'Get images'
     download_btn.disabled = false;
 
-    var options = {'radio_option_6': 6, 'radio_option_7': 7, 'radio_option_8': 8, 'radio_option_10': 10, }
-    var cols = options[document.querySelector('input[name="options"]:checked').id] //which radio button selected
+    var options = {'options_cols_6': 6, 'options_cols_7': 7, 'options_cols_8': 8, 'options_cols_10': 10, }
+    var cols = options[document.querySelector('input[name="options_cols"]:checked').id] //which radio button selected
 
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
@@ -200,7 +200,7 @@ function get_len() {
 }
 
 function checkDeckStringExistence(form_input) {
-    var status = document.getElementById("status_span");
+    var status = document.getElementById("status");
 
     // console.log(form_input.value)
     var re = /AAE\S*/
@@ -211,11 +211,11 @@ function checkDeckStringExistence(form_input) {
         form_input.value = deckstring[0]
 
         status.innerHTML = 'Seems like code';
-        status.style.color = '#007700';
+        status.style.color = '#1ab613';
         download.disabled = false;
     } else {
         status.innerHTML = 'Code not found';
-        status.style.color = '#aa0000';
+        status.style.color = '#db3a3a';
         // status.style.background = '#BFA487';
     }
     

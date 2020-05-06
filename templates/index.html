@@ -4,93 +4,115 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <title>Hs Deck Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/flags.css') }}">
 
     <script src="{{url_for('static', filename='js/script.js')}}"></script>
     <script src="{{ url_for('static',filename='js/iro.min.js') }}"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 
 <body>
 
 <div class="mainblock">
-    <form action="" method="post" name="form">
-        <div class="form-group">
-            <label for="deck_string_form">Deckstring <span id="status_span"></span></label>
-            <input class="form-control" id="deck_string_form_input" name="deck_string_form_input" aria-describedby="deck_string_form_input_Help" oninput="checkDeckStringExistence(this)">           
-            <small id="deck_string_form_input_Help" class="form-text text-muted">Paste your deck's code.</small>
-        </div>
+    <b class="code_example">AAECAQcC0gLerQMOFhyQA9QE1AjSpQP1qAPcqQPdrQOktgOrtgO7uQPAuQOcuwMA</b>
+    <div class="block_send">
+        <form action="" method="post" name="form">
+            <b id="status">placeholder</b>
+            <center><input class="block_send__input" id="block_send__input" name="block_send__input" type="text" spellcheck="false" placeholder="Your code" oninput="checkDeckStringExistence(this)"></center>
+            <!-- <input name="block_send__input" oninput="checkDeckStringExistence(this)">  -->
 
-<!--         <div class="deck_string_form_lang_checkbox">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options_LANG" id="option_enUS"  value="enUS" checked> enUS
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options_LANG" id="option_ruRU"  value="ruRU" > ruRU
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options_LANG" id="option_jaJP"  value="jaJP" > jaJP
-                </label>
+            <div class="deck_string_form_lang_checkbox">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary btn-sm active">
+                        <input class="checkbox-tools" type="radio" name="options_LANG" id="option_enUS"  value="enUS" checked> en
+                    </label>
+                    <label class="btn btn-secondary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_ruRU"  value="ruRU" > ru
+                    </label>
+                    <label class="btn btn-secondary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_jaJP"  value="jaJP" > ja
+                    </label>
+                </div>
             </div>
-        </div> -->
-        <div class="cc-selector">
-            <input id="enUS" type="radio" name="options_LANG" value="enUS" checked/>
-            <label class="drinkcard-cc enUS" for="enUS"></label>
-            <input id="ruRU" type="radio" name="options_LANG" value="ruRU" />
-            <label class="drinkcard-cc ruRU"for="ruRU"></label>
+            <div id="block_send__flex">
+                <button type="button" class="block_send__sendbtn" id="get_image0" onclick="get_deck_info();">Get images</button>
+                <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
+                <button type="button" class="block_send__sendbtn" id="options">Options</button>
+                <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
+                <a id="download" download="image.png">
+                    <button type="button" class="block_send__sendbtn" onclick="downloadImage();">Download</button>
+                </a>
+            </div>
+        </form>
+    </div>
 
-            <input id="jaJP" type="radio" name="options_LANG" value="jaJP" />
-            <label class="drinkcard-cc jaJP"for="jaJP"></label>
+    <div class="block_options">
+        <div class="opt_col">
+            <div class="opt_col__line">
+                <p>Columns</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options_cols" id="options_cols_6" autocomplete="off" onclick="drawCanvas();">6x↓
+                    </label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options_cols" id="options_cols_7" autocomplete="off" checked onclick="drawCanvas();">7x↓
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options_cols" id="options_cols_8" autocomplete="off" onclick="drawCanvas();">8x↓
+                    </label>    
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options_cols" id="options_cols_10" autocomplete="off" onclick="drawCanvas(0);">
+                        10x↓
+                    </label>
+                </div>
+            </div>
+            <div class="opt_col__line">
+                <p>Hero image</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options_bg_hero" id="options_bg_hero_on" autocomplete="off" checked onclick="drawCanvas();">on
+                    </label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options_bg_hero" id="options_bg_hero_off" autocomplete="off"onclick="drawCanvas();">off
+                </div>
+            </div>
+            <div class="opt_col__line">
+                <p>Cards shadows</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options_cards_shadow" id="options_cards_shadow_on" autocomplete="off" checked onclick="drawCanvas();">on
+                    </label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options_cards_shadow" id="options_cards_shadow_off" autocomplete="off" onclick="drawCanvas();">off
+                </div>
+            </div>
         </div>
-
-        <!-- <button type="submit" class="centerblock__sendbtn" id="get_image">Get image</button> -->
-        <button type="button" class="centerblock__sendbtn" id="get_image" onclick="get_deck_info();">Get image</button>
-
-    </form>
-<!--     <br>
-    <div>
-        <button type="button" value="Len" onclick="get_len();"> Len
-    </div> -->
-
-    <br>
-
-
-    <!-- <a id="download" download="image.png"><button type="button" onClick="downloadImage()">Download</button></a> -->
-    <a id="download" download="image.png"><button type="button" class="btn btn-success" id="download_btn" onClick="downloadImage()" disabled>Download</button></a>
-
-
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-info btn-sm">
-            <input class="ooo" type="radio" name="options" id="radio_option_6" autocomplete="off" onclick="drawCanvas();"> 6 Cols
-        </label>
-        <label class="btn btn-info btn-sm active">
-            <input class="ooo" type="radio" name="options" id="radio_option_7" autocomplete="off" checked onclick="drawCanvas();"> 7 Cols
-        </label>
-        <label class="btn btn-info btn-sm">
-            <input class="ooo" type="radio" name="options" id="radio_option_8" autocomplete="off" onclick="drawCanvas();"> 8 Cols
-        </label>    
-        <label class="btn btn-info btn-sm">
-            <input class="ooo" type="radio" name="options" id="radio_option_10" autocomplete="off" onclick="drawCanvas(0);"> 10 Cols
-        </label>
+        <div class="opt_col">
+            <div class="opt_col__line">
+                <p>Deck's info</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options_deck_info" id="options_deck_info_on" autocomplete="off" checked onclick="drawCanvas();">on
+                    </label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options_deck_info" id="options_deck_info_off" autocomplete="off" onclick="drawCanvas();">off
+                </div>
+            </div>
+            <div class="opt_col__line">
+                <p>Deck's name</p>
+                <input class="deck_name_input" id="deck_name_input" name="deck_name_input" type="text" spellcheck="false">
+            </div>
+        </div>
+        <div class="opt_col">
+            <div class="opt_col__line">
+                <p>Background color</p>
+                <div id="sliderPicker"></div>
+            </div>
+        </div>
     </div>
-
-    <button class="btn btn-info color_btn" id="color_btn">Background Color</button>
-    <div class="color_changer">
-        <div id="sliderPicker"></div>
-<!--         <div class="color_changer__box">
-            <p>I am a color_changer! </p>
-            <p>Click anywhere to close me!</p>
-        </div> -->
-    </div>
-
-    <script>
-
-    </script>
-
-    <br>22.25 just some separate text string 
 
     <div class="flex-container" id="canvas_div">
         <canvas class="inner-element" id='canvas' width="1792" height="1200">Закруглённые углы</canvas>
