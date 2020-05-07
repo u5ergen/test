@@ -4,6 +4,14 @@ var get_cards_btn = document.getElementById("get_image0");
 var options_btn = document.getElementById("options");
 var download_btn = document.getElementById("download_btn");
 
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext('2d');
+context.fillStyle = '#352c23';
+context.font = "36px Roboto";
+context.textAlign = 'center';
+context.textBaseline = "middle";
+context.fillText('nothing yet', canvas.width/2, canvas.height/2);
+
 var sliderPicker = new iro.ColorPicker("#sliderPicker", {
     width: 250,
     color: "rgba(0, 0, 0, 1)",
@@ -107,8 +115,7 @@ function drawCanvas(){
     var deck_name = document.getElementById('deck_name_input').value
     var options_deck_info = document.querySelector('input[name="options_deck_info"]:checked').value
 
-    var canvas = document.getElementById("canvas");
-    var context = canvas.getContext('2d');
+
     context.clearRect(0, 0, 1792, 1200) ///! move into model
 
     var height_correction = (hero_image > 0) ? 300 * (cols*0.1) : 0; ///? move into model
