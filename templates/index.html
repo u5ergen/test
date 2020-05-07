@@ -17,33 +17,67 @@
 <body>
 
 <div class="mainblock">
-    <b class="code_example">*AAECAQcC0gLerQMOFhyQA9QE1AjSpQP1qAPcqQPdrQOktgOrtgO7uQPAuQOcuwMA</b>
+    <!-- <b class="code_example">AAECAQcC0gLerQMOFhyQA9QE1AjSpQP1qAPcqQPdrQOktgOrtgO7uQPAuQOcuwMA</b> -->
     <div class="block_send">
         <form action="" method="post" name="form">
-            <b id="status">placeholder</b>
+            <b id="status" disabled>placeholder</b>
             <center><input class="block_send__input" id="block_send__input" name="block_send__input" type="text" spellcheck="false" placeholder="Your code" oninput="checkDeckStringExistence(this)"></center>
             <!-- <input name="block_send__input" oninput="checkDeckStringExistence(this)">  -->
 
             <div class="deck_string_form_lang_checkbox">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary btn-sm active">
-                        <input class="checkbox-tools" type="radio" name="options_LANG" id="option_enUS"  value="enUS" checked> en
+                    <label class="btn btn-primary btn-sm active">
+                        <input type="radio" name="options_LANG" id="option_enUS"  value="enUS" checked> EN
                     </label>
-                    <label class="btn btn-secondary btn-sm">
-                        <input type="radio" name="options_LANG" id="option_ruRU"  value="ruRU" > ru
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_ruRU"  value="ruRU" > RU
                     </label>
-                    <label class="btn btn-secondary btn-sm">
-                        <input type="radio" name="options_LANG" id="option_jaJP"  value="jaJP" > ja
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_deDE"  value="deDE" > DE
                     </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_esES"  value="esES" > ES
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_esMX"  value="esMX" > MX
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_frFR"  value="frFR" > FR
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_itIT"  value="itIT" > IT
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_jaJP"  value="jaJP" > JP
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_koKR"  value="koKR" > KR
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_plPL"  value="plPL" > PL
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_ptBR"  value="ptBR" > BR
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_thTH"  value="thTH" > TH
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_zhCN"  value="zhCN" > CN
+                    </label>
+                    <label class="btn btn-primary btn-sm">
+                        <input type="radio" name="options_LANG" id="option_zhTW"  value="zhTW" > TW
+                    </label>
+
                 </div>
             </div>
             <div id="block_send__flex">
-                <button type="button" class="block_send__sendbtn" id="get_image0" onclick="get_deck_info();">Get images</button>
+                <button type="button" class="block_send__sendbtn" id="get_image0" onclick="get_deck_info();" disabled>Get images</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
-                <button type="button" class="block_send__sendbtn" id="options">Options</button>
+                <button type="button" class="block_send__sendbtn" id="options" disabled>Options</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
                 <a id="download" download="image.png">
-                    <button type="button" class="block_send__sendbtn" onclick="downloadImage();">Download</button>
+                    <button type="button" class="block_send__sendbtn" id = "download_btn" onclick="downloadImage();" disabled>Download</button>
                 </a>
             </div>
         </form>
@@ -96,14 +130,14 @@
                 <p>Dect cost</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options_deck_info" value="1" autocomplete="off" checked onclick="drawCanvas();">on
+                        <input type="radio" name="options_deck_info" value="1" autocomplete="off" onclick="drawCanvas();">on
                     </label>
                     <label class="btn btn-secondary active">
-                        <input type="radio" name="options_deck_info" value="0" autocomplete="off" onclick="drawCanvas();">off
+                        <input type="radio" name="options_deck_info" value="0" autocomplete="off" checked onclick="drawCanvas();">off
                 </div>
             </div>
             <div class="opt_col__line">
-                <p>Deck's name</p>
+                <p>Deck name</p>
                 <input class="deck_name_input" id="deck_name_input" name="deck_name_input" type="text" spellcheck="false" maxlength="20" oninput="drawCanvas();">
             </div>
         </div>

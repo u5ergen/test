@@ -1,6 +1,8 @@
 var deck_info = {'decklist': 0};
 var loadedImages = {};
-var download_btn = document.getElementById("get_image0");
+var get_cards_btn = document.getElementById("get_image0");
+var options_btn = document.getElementById("options");
+var download_btn = document.getElementById("download_btn");
 
 var sliderPicker = new iro.ColorPicker("#sliderPicker", {
     width: 250,
@@ -36,6 +38,8 @@ var sliderPicker = new iro.ColorPicker("#sliderPicker", {
     },
     ]
 });
+sliderPicker.color.hue = 180;
+sliderPicker.color.saturation = 50;
 
 sliderPicker.on('color:change', function(color) {
     // console.log(color.hexString);
@@ -44,7 +48,7 @@ sliderPicker.on('color:change', function(color) {
 
 
 function get_deck_info() {
-    download_btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading... 0%';
+    get_cards_btn.innerHTML = '<span class="spinner-border" role="status" aria-hidden="true"></span> Loading... 0%';
     new Promise(r => setTimeout(r, 2000));
     $.ajax({
         type: "POST",
@@ -57,10 +61,10 @@ function get_deck_info() {
             if (deck_info_incoming['decklist'] != 0) {
 
                 var percentage = 0;
-                function update_download_btn() {
+                function update_get_cards_btn() {
                     percentage = percentage + Math.round(100/deck_info_incoming['images_filenames_all'].length)
                     console.log(percentage)
-                    download_btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading... ' + percentage + '%'
+                    get_cards_btn.innerHTML = '<span class="spinner-border" role="status" aria-hidden="true"></span> Loading... ' + percentage + '%'
                 }
 
                 var loadedImages_incoming = {};
@@ -73,7 +77,7 @@ function get_deck_info() {
                             loadedImages[image_url] = img;
                             resolve();
 
-                            update_download_btn()
+                            update_get_cards_btn()
                         };
                         img.src = image_url;
                     });
@@ -93,7 +97,8 @@ function get_deck_info() {
 }
 
 function drawCanvas(){
-    download_btn.innerHTML = 'Get images'
+    get_cards_btn.innerHTML = 'Get images'
+    options_btn.disabled = false;
     download_btn.disabled = false;
 
     var cols = document.querySelector('input[name="options_cols"]:checked').value //which radio button selected
@@ -233,13 +238,16 @@ function checkDeckStringExistence(form_input) {
     var deckstring = re.exec(form_input.value)
     // console.log(deckstring)
 
+    status.disabled = false;
     if (deckstring != null) {
         form_input.value = deckstring[0]
+        get_cards_btn.disabled = false;
 
         status.innerHTML = 'Seems like code';
         status.style.color = '#1ab613';
-        download.disabled = false;
     } else {
+        get_cards_btn.disabled = true;
+
         status.innerHTML = 'Code not found';
         status.style.color = '#db3a3a';
         // status.style.background = '#BFA487';
