@@ -72,12 +72,12 @@
                 </div>
             </div>
             <div id="block_send__flex">
-                <button type="button" class="block_send__sendbtn" id="get_image0" onclick="get_deck_info();" disabled>Get images</button>
+                <button type="button" class="block_send__sendbtn" id="get_image0" onclick="get_deck_info();">Get images</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
-                <button type="button" class="block_send__sendbtn" id="options" disabled>Options</button>
+                <button type="button" class="block_send__sendbtn" id="options">Options</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
                 <a id="download" download="image.png">
-                    <button type="button" class="block_send__sendbtn" id = "download_btn" onclick="downloadImage();" disabled>Download</button>
+                    <button type="button" class="block_send__sendbtn" id = "download_btn" onclick="downloadImage();">Download</button>
                 </a>
             </div>
         </form>
@@ -85,7 +85,7 @@
 
 <div id="hidden">
     <div class="block_options" id="block_options">
-        <div class="opt_col">
+<!--         <div class="opt_col">
             <div class="opt_col__line">
                 <p>Columns</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -144,9 +144,9 @@
         <div class="opt_col">
             <div class="opt_col__line">
                 <p>Background color</p>
-                <!-- <div id="sliderPicker"></div> -->
+                <div id="sliderPicker"></div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
