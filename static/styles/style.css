@@ -234,12 +234,13 @@ body {
 
 .block_options {
     /*display: none;*/
+    border: 1px black solid;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 196px;
-    margin: 20px;
-    padding-right: 20px;
+    height: 226px;
+    /*margin: 20px;*/
+    padding: 20px;
     font-size: 18px;
     font-weight: 500;
     color: #44392d;
