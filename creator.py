@@ -49,6 +49,7 @@ def make_deck_info_dict(deckstring, lang='enUS', send_existing_files = False):
 		'card_width': 256,
 		'card_height': 388,
 		'x2_image': {'src': 'static/images/x2-42.png', 'position_correction': [98, 340]},
+		'dust': 'static/images/dust.png?1',
 		'decklist': [],
 		'images_filenames_cards': [],
 		'images_filenames_all': [],
@@ -87,6 +88,7 @@ def make_deck_info_dict(deckstring, lang='enUS', send_existing_files = False):
 
 	deck_info['images_filenames_all'].extend(deck_info['images_filenames_cards'])
 	deck_info['images_filenames_all'].extend([deck_info['class_bg_top'], deck_info['x2_image']['src']])
+	deck_info['images_filenames_all'].extend([deck_info['dust']])
 
 	return deck_info
 

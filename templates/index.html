@@ -56,16 +56,16 @@
                 <p>Columns</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options_cols" id="options_cols_6" autocomplete="off" onclick="drawCanvas();">6x↓
+                        <input type="radio" name="options_cols" value="6" valureautocomplete="off" onclick="drawCanvas();">6x↓
                     </label>
                     <label class="btn btn-secondary active">
-                        <input type="radio" name="options_cols" id="options_cols_7" autocomplete="off" checked onclick="drawCanvas();">7x↓
+                        <input type="radio" name="options_cols" value="7" autocomplete="off" checked onclick="drawCanvas();">7x↓
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options_cols" id="options_cols_8" autocomplete="off" onclick="drawCanvas();">8x↓
+                        <input type="radio" name="options_cols" value="8" autocomplete="off" onclick="drawCanvas();">8x↓
                     </label>    
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options_cols" id="options_cols_10" autocomplete="off" onclick="drawCanvas(0);">
+                        <input type="radio" name="options_cols" value="10" autocomplete="off" onclick="drawCanvas(0);">
                         10x↓
                     </label>
                 </div>
@@ -74,20 +74,20 @@
                 <p>Hero image</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options_bg_hero" id="options_bg_hero_on" autocomplete="off" checked onclick="drawCanvas();">on
+                        <input type="radio" name="options_bg_hero" value="1" autocomplete="off" checked onclick="drawCanvas();">on
                     </label>
                     <label class="btn btn-secondary active">
-                        <input type="radio" name="options_bg_hero" id="options_bg_hero_off" autocomplete="off"onclick="drawCanvas();">off
+                        <input type="radio" name="options_bg_hero" value="0" autocomplete="off"onclick="drawCanvas();">off
                 </div>
             </div>
             <div class="opt_col__line">
                 <p>Cards shadows</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options_cards_shadow" id="options_cards_shadow_on" autocomplete="off" checked onclick="drawCanvas();">on
+                        <input type="radio" name="options_cards_shadow" value="1"autocomplete="off" checked onclick="drawCanvas();">on
                     </label>
                     <label class="btn btn-secondary active">
-                        <input type="radio" name="options_cards_shadow" id="options_cards_shadow_off" autocomplete="off" onclick="drawCanvas();">off
+                        <input type="radio" name="options_cards_shadow" value="0" autocomplete="off" onclick="drawCanvas();">off
                 </div>
             </div>
         </div>
@@ -96,15 +96,15 @@
                 <p>Deck's info</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options_deck_info" id="options_deck_info_on" autocomplete="off" checked onclick="drawCanvas();">on
+                        <input type="radio" name="options_deck_info" value="1" autocomplete="off" checked onclick="drawCanvas();">on
                     </label>
                     <label class="btn btn-secondary active">
-                        <input type="radio" name="options_deck_info" id="options_deck_info_off" autocomplete="off" onclick="drawCanvas();">off
+                        <input type="radio" name="options_deck_info" value="0" autocomplete="off" onclick="drawCanvas();">off
                 </div>
             </div>
             <div class="opt_col__line">
                 <p>Deck's name</p>
-                <input class="deck_name_input" id="deck_name_input" name="deck_name_input" type="text" spellcheck="false">
+                <input class="deck_name_input" id="deck_name_input" name="deck_name_input" type="text" spellcheck="false" oninput="drawCanvas();">
             </div>
         </div>
         <div class="opt_col">

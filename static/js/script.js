@@ -96,17 +96,20 @@ function drawCanvas(){
     download_btn.innerHTML = 'Get images'
     download_btn.disabled = false;
 
-    var options = {'options_cols_6': 6, 'options_cols_7': 7, 'options_cols_8': 8, 'options_cols_10': 10, }
-    var cols = options[document.querySelector('input[name="options_cols"]:checked').id] //which radio button selected
+    var cols = document.querySelector('input[name="options_cols"]:checked').value //which radio button selected
+    var hero_image = document.querySelector('input[name="options_bg_hero"]:checked').value
+    var cards_shadows = document.querySelector('input[name="options_cards_shadow"]:checked').value
+    var deck_name = document.getElementById('deck_name_input').value
+    var options_deck_info = document.querySelector('input[name="options_deck_info"]:checked').value
 
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
     context.clearRect(0, 0, 1792, 1200) ///! move into model
 
-    var height_correction = 300 * (cols*0.1); ///? move into model
+    var height_correction = (hero_image > 0) ? 300 * (cols*0.1) : 0; ///? move into model
 
     canvas.width = deck_info['card_width'] * cols
-    canvas.height = (deck_info['card_height'] * (Math.ceil(deck_info['decklist'].length / cols))) + height_correction;
+    canvas.height = (deck_info['card_height'] * (Math.ceil(deck_info['decklist'].length / cols))) + 20 + height_correction;
 
     var background_color = sliderPicker.color.rgbaString;
     console.log(background_color)
@@ -115,7 +118,7 @@ function drawCanvas(){
     context.fillStyle = background_color;
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    context.drawImage(loadedImages[deck_info['class_bg_top']], 0, 0, canvas.width, canvas.width*560/2600);  ///? move into model
+    if (hero_image > 0) {context.drawImage(loadedImages[deck_info['class_bg_top']], 0, 0, canvas.width, canvas.width*560/2600)};  ///? move into model
 
     for (var i = 0; i < deck_info['decklist'].length; i++) {
         if (i <= cols-1) {
@@ -142,22 +145,37 @@ function drawCanvas(){
 
         position_y = position_y + height_correction
 
+        if (cards_shadows > 0) {
+            context.shadowBlur = 20;
+            context.shadowColor = "#000000";
+        }
+
         if (deck_info['decklist'][i][1] == 2) {
             context.drawImage(loadedImages[deck_info['x2_image']['src']], 
                 position_x + deck_info['x2_image']['position_correction'][0], 
                 position_y + deck_info['x2_image']['position_correction'][1]);
         }
 
-        context.shadowBlur = 20;
-        context.shadowColor = "#000000";
         context.drawImage(loadedImages[deck_info['images_filenames_cards'][i]], position_x, position_y);
     }
 
-    // context.shadowBlur = 0;
-    // context.fillStyle = 'rgba(45,45,45,1)';
-    // context.font = "36px Roboto";
-    // context.fillText(deck_info['class_name'] + "'s Deck. Costs: " + deck_info['deck_cost'], 100, 120); ///? move into model
-    // context.fillText("Format: " + deck_info['format'], 100, 160); ///? move into model
+    if (deck_name.length > 0) {
+        context.shadowBlur = 0;
+        context.fillStyle = 'rgba(255,255,255,0.8)';
+        context.font = "36px Roboto";
+        // context.fillText(deck_info['class_name'] + "'s Deck. Costs: " + deck_info['deck_cost'], 100, 120); ///? move into model
+        // context.fillText("Format: " + deck_info['format'], 100, 160); ///? move into model
+        context.fillText(deck_name, 100, 120);
+    }
+
+    if (options_deck_info > 0) {
+        context.drawImage(loadedImages[deck_info['dust']], canvas.width - 200, 75)
+
+        context.shadowBlur = 0;
+        context.fillStyle = 'rgba(255,255,255,0.8)';
+        context.font = "36px Roboto";
+        context.fillText(deck_info['deck_cost'], canvas.width - 145, 120);
+    }
 }
 
 
