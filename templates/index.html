@@ -71,16 +71,6 @@
                 </div>
             </div>
             <div class="opt_col__line">
-                <p>Hero image</p>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options_bg_hero" value="1" autocomplete="off" checked onclick="drawCanvas();">on
-                    </label>
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="options_bg_hero" value="0" autocomplete="off"onclick="drawCanvas();">off
-                </div>
-            </div>
-            <div class="opt_col__line">
                 <p>Cards shadows</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
@@ -93,7 +83,17 @@
         </div>
         <div class="opt_col">
             <div class="opt_col__line">
-                <p>Deck's info</p>
+                <p>Hero image</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options_bg_hero" value="1" autocomplete="off" checked onclick="drawCanvas();">on
+                    </label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options_bg_hero" value="0" autocomplete="off"onclick="drawCanvas();">off
+                </div>
+            </div>
+            <div class="opt_col__line">
+                <p>Dect cost</p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
                         <input type="radio" name="options_deck_info" value="1" autocomplete="off" checked onclick="drawCanvas();">on
@@ -104,7 +104,7 @@
             </div>
             <div class="opt_col__line">
                 <p>Deck's name</p>
-                <input class="deck_name_input" id="deck_name_input" name="deck_name_input" type="text" spellcheck="false" oninput="drawCanvas();">
+                <input class="deck_name_input" id="deck_name_input" name="deck_name_input" type="text" spellcheck="false" maxlength="20" oninput="drawCanvas();">
             </div>
         </div>
         <div class="opt_col">

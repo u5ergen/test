@@ -159,22 +159,30 @@ function drawCanvas(){
         context.drawImage(loadedImages[deck_info['images_filenames_cards'][i]], position_x, position_y);
     }
 
-    if (deck_name.length > 0) {
+    if (deck_name.length > 0 && hero_image > 0) {
         context.shadowBlur = 0;
-        context.fillStyle = 'rgba(255,255,255,0.8)';
+        context.fillStyle = 'rgba(0,0,0,0.65)';
+        context.fillRect(0, 120, 430, 72);
+
+        context.fillStyle = '#ffffff';
         context.font = "36px Roboto";
-        // context.fillText(deck_info['class_name'] + "'s Deck. Costs: " + deck_info['deck_cost'], 100, 120); ///? move into model
-        // context.fillText("Format: " + deck_info['format'], 100, 160); ///? move into model
-        context.fillText(deck_name, 100, 120);
+        context.textAlign = 'center';
+        context.textBaseline = "middle";
+        context.fillText(deck_name, 215, 156);
     }
 
-    if (options_deck_info > 0) {
-        context.drawImage(loadedImages[deck_info['dust']], canvas.width - 200, 75)
-
+    if (options_deck_info > 0 && hero_image > 0) {
         context.shadowBlur = 0;
-        context.fillStyle = 'rgba(255,255,255,0.8)';
+        context.fillStyle = 'rgba(0,0,0,0.65)';
+        context.fillRect(canvas.width - 430, 120, 430, 72);
+
+        context.drawImage(loadedImages[deck_info['dust']], canvas.width - 290, 124)
+
+        context.fillStyle = '#ffffff';
         context.font = "36px Roboto";
-        context.fillText(deck_info['deck_cost'], canvas.width - 145, 120);
+        context.textAlign = 'left';
+        context.textBaseline = "middle";
+        context.fillText(deck_info['deck_cost'], canvas.width - 234, 156);
     }
 }
 
