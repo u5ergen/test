@@ -160,6 +160,7 @@ function drawCanvas(){
     }
 
     if (deck_name.length > 0 && hero_image > 0) {
+        
         context.shadowBlur = 0;
         context.fillStyle = 'rgba(0,0,0,0.65)';
         context.fillRect(0, 120, 430, 72);
