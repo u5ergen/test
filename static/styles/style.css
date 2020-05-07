@@ -127,8 +127,10 @@ body {
 }
 
 .mainblock{
-    margin-left: 40px;
+    margin: 40px;
+/*    margin-left: 40px;
     margin-right: 40px;
+    margin-top: 40px;*/
     min-width: 800px;
     /*border: solid 1px white; */
 }
@@ -139,7 +141,6 @@ body {
     background-color: #44392d;
     border:none;
     border-radius: 10px;
-    margin-top: 40px;
 }
 
 #status{
@@ -282,10 +283,10 @@ body {
     display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
 
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     width: 100%;
-    height: 100%;
+    height: 640px;
     border: none;
     border-radius: 10px;
     background-color: #44392d;
