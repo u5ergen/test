@@ -116,7 +116,7 @@ def get_deck_info():
 		print(deckstring)
 		print(lang)
 		try:
-			deck_info = make_deck_info_dict(deckstring, lang=lang)#, send_existing_files = True)
+			deck_info = make_deck_info_dict(deckstring, lang=lang, send_existing_files = True)
 		except:
 			deck_info = {'decklist': 0}
 	else:
