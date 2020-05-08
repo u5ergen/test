@@ -1,6 +1,6 @@
 var deck_info = {'decklist': 0};
 var loadedImages = {};
-var get_cards_btn = document.getElementById("get_image0");
+var get_cards_btn = document.getElementById("get_cards_images");
 var options_btn = document.getElementById("options");
 var download_btn = document.getElementById("download_btn");
 
@@ -56,7 +56,6 @@ sliderPicker.on('color:change', function(color) {
 
 
 function get_deck_info() {
-    get_cards_btn.innerHTML = '<span class="spinner-border" role="status" aria-hidden="true"></span> Loading... 0%';
     new Promise(r => setTimeout(r, 2000));
     $.ajax({
         type: "POST",
@@ -67,6 +66,7 @@ function get_deck_info() {
             var deck_info_incoming = jQuery.parseJSON(response)
 
             if (deck_info_incoming['decklist'] != 0) {
+                get_cards_btn.innerHTML = '<span class="spinner-border" role="status" aria-hidden="true"></span> Loading... 0%';
 
                 var percentage = 0;
                 function update_get_cards_btn() {
@@ -93,6 +93,14 @@ function get_deck_info() {
                 });
 
                 Promise.all(promiseArray).then(drawCanvas);
+            } else {
+                var status = document.getElementById("status");
+                status.innerHTML = 'But still not a code. Try again.';
+                status.style.color = '#db3a3a';
+
+                // get_cards_btn.innerHTML = 'Get images'
+
+                $("#get_cards_images").effect("shake", {times:2,distance:6});
             }
 
             deck_info = deck_info_incoming

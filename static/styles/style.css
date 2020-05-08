@@ -235,7 +235,7 @@ body {
 
 .block_options {
     /*display: none;*/
-    border: 1px black solid;
+    /*border: 1px black solid;*/
     display: flex;
     justify-content: space-between;
     width: 100%;

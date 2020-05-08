@@ -72,12 +72,12 @@
                 </div>
             </div>
             <div id="block_send__flex">
-                <button type="button" class="block_send__sendbtn" id="get_image0" onclick="get_deck_info();">Get images</button>
+                <button disabled="" type="button" class="block_send__sendbtn" id="get_cards_images" onclick="get_deck_info();">Get images</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
-                <button type="button" class="block_send__sendbtn" id="options">Options</button>
+                <button disabled="" type="button" class="block_send__sendbtn" id="options">Options</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
                 <a id="download" download="image.png">
-                    <button type="button" class="block_send__sendbtn" id = "download_btn" onclick="downloadImage();">Download</button>
+                    <button disabled="" type="button" class="block_send__sendbtn" id = "download_btn" onclick="downloadImage();">Download</button>
                 </a>
             </div>
         </form>
@@ -164,7 +164,7 @@
   integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
   crossorigin="anonymous"></script>
 <script src= "{{ url_for('static',filename='js/script.js') }}"></script>
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 </body>
 </html>
 
