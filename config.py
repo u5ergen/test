@@ -7,3 +7,4 @@ class Config:
 	TEMP_DIR = os.path.join(BASE_DIR, 'static/images/temp/')
 
 	HSSITE_MODE = os.getenv('HSSITE_MODE')
+	# HSSITE_MODE = os.environ['HSSITE_MODE']
