@@ -20,7 +20,7 @@
     <!-- <b class="code_example">AAECAQcC0gLerQMOFhyQA9QE1AjSpQP1qAPcqQPdrQOktgOrtgO7uQPAuQOcuwMA</b> -->
     <div class="block_send">
         <form action="" method="post" name="form">
-            <b id="status" disabled>placeholder</b>
+            <b id="status" disabled>placeholder {{HSSITE_MODE}}</b>
             <center><input class="block_send__input" id="block_send__input" name="block_send__input" type="text" spellcheck="false" placeholder="Your code" oninput="checkDeckStringExistence(this)"></center>
             <!-- <input name="block_send__input" oninput="checkDeckStringExistence(this)">  -->
 
@@ -72,12 +72,12 @@
                 </div>
             </div>
             <div id="block_send__flex">
-                <button disabled="" type="button" class="block_send__sendbtn" id="get_cards_images" onclick="get_deck_info();">Get images</button>
+                <button {{disabled}} type="button" class="block_send__sendbtn" id="get_cards_images" onclick="get_deck_info();">Get images</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
-                <button disabled="" type="button" class="block_send__sendbtn" id="options">Options</button>
+                <button {{disabled}} type="button" class="block_send__sendbtn" id="options">Options</button>
                 <img id="arrow_right" src="{{url_for('static', filename='images/arrow_right.svg')}}" alt=">">
                 <a id="download" download="image.png">
-                    <button disabled="" type="button" class="block_send__sendbtn" id = "download_btn" onclick="downloadImage();">Download</button>
+                    <button {{disabled}} type="button" class="block_send__sendbtn" id = "download_btn" onclick="downloadImage();">Download</button>
                 </a>
             </div>
         </form>
