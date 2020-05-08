@@ -18,12 +18,12 @@ import tmp
 
 
 TEMP_DIR = Config.TEMP_DIR
-HSSITE_MODE = Config.HSSITE_MODE
-# HSSITE_MODE = 'production'
 
 
 app = Flask(__name__,)
 app.config.from_object(Config)
+HSSITE_MODE = app.config['HSSITE_MODE']
+# HSSITE_MODE = 'production'
 
 
 class SendCodeString(FlaskForm):
