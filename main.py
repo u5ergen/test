@@ -86,7 +86,7 @@ def webhook():
 		# repo = git.Repo('https://github.com/u5ergen/test.git')
 		repo = git.Repo('/home/viy04205/mysite')
 		origin = repo.remotes.origin
-		origin.pull('master')
+		origin.pull('develop')
 
 		return 'Updated PythonAnywhere successfully', 200
 	else:
